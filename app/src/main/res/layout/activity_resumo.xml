@@ -7,7 +7,7 @@
     tools:context=".ResumoActivity">
 
     <TextView
-        android:id="@+id/textResumo"
+        android:id="@+id/textViewResumo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Resumo"

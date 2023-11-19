@@ -16,8 +16,8 @@ class MainActivity : AppCompatActivity() {
 
 
         binding.buttonMenu.setOnClickListener{
-            val intent = Intent(this, OpcoesActivity::class.java)
-            startActivity(intent)
+            val i = Intent(this, OpcoesActivity::class.java)
+            startActivity(i)
 
         }
 

@@ -5,14 +5,14 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.CheckBox
 import android.widget.EditText
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.daniel.teste2.databinding.ActivityOpcoesBinding
 
 class OpcoesActivity : AppCompatActivity() {
 
-    //DUVIDA: Porque as variaveis foram declaradas aqui?
+
     private lateinit var binding: ActivityOpcoesBinding
+
     private lateinit var checkBoxSapato: CheckBox
     private lateinit var checkBoxCamisa: CheckBox
     private lateinit var checkBoxBermuda: CheckBox
@@ -81,14 +81,6 @@ class OpcoesActivity : AppCompatActivity() {
         //Aqui foi feito um evento de click no botao calcular
         buttonCalcular.setOnClickListener {
 
-            var i = Intent(this, ResumoActivity::class.java)
-            i.putExtra("valorSapato", valorSapato)
-            i.putExtra("qtdSapato", editTextSapato.text.toString())
-            i.putExtra("valorCamisa", valorCamisa)
-            i.putExtra("qtdCamisa", editTextCamisa.text.toString())
-            i.putExtra("valorBermuda", valorBermuda)
-            i.putExtra("qtdBermuda", editTextBermuda.text.toString())
-            startActivity(i)
 
             var total = 0.0
             if (checkBoxSapato.isChecked) {
@@ -100,7 +92,25 @@ class OpcoesActivity : AppCompatActivity() {
             if (checkBoxBermuda.isChecked) {
                 total += valorBermuda * editTextBermuda.text.toString().toDouble()
             }
-            Toast.makeText(this, "O valor total é: $total", Toast.LENGTH_SHORT).show()
+            /*Esta linha cria um Toast, que é uma pequena mensagem que aparece na parte inferior da tela
+            por um curto período de tempo. Basta comenta-lo para desabilita-lo
+             */
+            //Toast.makeText(this, "O valor total é: $total", Toast.LENGTH_SHORT).show()
+
+
+/*Esse trecho passa as informaçoes para a activity que receberá estes dados que neste caso
+é a activity ResumoActivity, logo abaixo da bariavel contem os extras que está adicionando
+um extra ao Intent chamado “valorSapato”. Quando a ResumoActivity for iniciada, ela poderá
+recuperar esse extra para obter o valor do sapato.
+ */
+            var i = Intent(this, ResumoActivity::class.java)
+            i.putExtra("valorSapato", valorSapato)
+            i.putExtra("qtdSapato", editTextSapato.text.toString())
+            i.putExtra("valorCamisa", valorCamisa)
+            i.putExtra("qtdCamisa", editTextCamisa.text.toString())
+            i.putExtra("valorBermuda", valorBermuda)
+            i.putExtra("qtdBermuda", editTextBermuda.text.toString())
+            startActivity(i)
         }
     }
 
